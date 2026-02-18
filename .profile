@@ -8,7 +8,9 @@ __PROFILE_LOADED=1
 # =============================================================================
 # XDG Base Directory Setup (must be first!)
 # =============================================================================
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles"
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    export XDG_CONFIG_HOME="$HOME/.config/dotfiles"
+fi
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
 DOTFILES_DIR="$XDG_CONFIG_HOME"
 

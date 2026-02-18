@@ -5,6 +5,7 @@
 
 setup() {
     export HOME="/homedir"
+    export XDG_CONFIG_HOME=""  # Reset to test fallback
     export DOTFILES_DIR="$HOME/.config/dotfiles"
     load "$DOTFILES_DIR/env.sh"
 }
@@ -59,4 +60,12 @@ setup() {
 @test "env.sh guard prevents reloading" {
     run bash -c "source $DOTFILES_DIR/env.sh; echo \$__ENV_LOADED"
     [ "$output" = "1" ]
+}
+
+@test "profile sets XDG_CONFIG_HOME correctly" {
+    output="$(HOME=/homedir bash -c 'source /homedir/.profile && echo XDG=$XDG_CONFIG_HOME' 2>&1)"
+    status=$?
+    [ "$status" -eq 0 ]
+    echo "output: $output" >&2
+    [ "$output" = "XDG=/homedir/.config/dotfiles" ]
 }
