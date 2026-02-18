@@ -82,7 +82,7 @@ This project follows the [XDG Base Directory Specification](https://specificatio
 
 | Variable           | Default             | Our Value                        |
 | ------------------ | ------------------- | -------------------------------- |
-| `$XDG_CONFIG_HOME` | `$HOME/.config`    | `$HOME/.config/dotfiles`         |
+| `$XDG_CONFIG_HOME` | `$HOME/.config`    | `$HOME/.config` (standard)       |
 | `$XDG_DATA_HOME`   | `$HOME/.local/share` | -                              |
 | `$XDG_STATE_HOME`  | `$HOME/.local/state` | -                              |
 | `$XDG_CACHE_HOME`  | `$HOME/.cache`     | -                                |
@@ -118,11 +118,11 @@ This layout ensures:
 
 ### 5.1 XDG Configuration Setup
 
-The `.profile` file must set `$XDG_CONFIG_HOME` before sourcing any configuration:
+The `.profile` file must set `$XDG_CONFIG_HOME` to the standard location before sourcing any configuration:
 
 ```sh
 # Set XDG Base Directory (must be first)
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
 ```
 

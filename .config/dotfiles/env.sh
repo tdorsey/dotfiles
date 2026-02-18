@@ -11,12 +11,12 @@ __ENV_LOADED=1
 # =============================================================================
 # Ensure XDG_CONFIG_HOME is set (fallback if not set by .profile)
 if [ -z "$XDG_CONFIG_HOME" ]; then
-    export XDG_CONFIG_HOME="$HOME/.config/dotfiles"
+    export XDG_CONFIG_HOME="$HOME/.config"
 fi
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
 
-# Define DOTFILES_DIR for convenience
-DOTFILES_DIR="$XDG_CONFIG_HOME"
+# Define DOTFILES_DIR for convenience (within XDG_CONFIG_HOME)
+DOTFILES_DIR="$XDG_CONFIG_HOME/dotfiles"
 
 # =============================================================================
 # PATH Configuration

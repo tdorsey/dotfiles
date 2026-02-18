@@ -9,10 +9,12 @@ __PROFILE_LOADED=1
 # XDG Base Directory Setup (must be first!)
 # =============================================================================
 if [ -z "$XDG_CONFIG_HOME" ]; then
-    export XDG_CONFIG_HOME="$HOME/.config/dotfiles"
+    export XDG_CONFIG_HOME="$HOME/.config"
 fi
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
-DOTFILES_DIR="$XDG_CONFIG_HOME"
+
+# Dotfiles directory (within XDG_CONFIG_HOME)
+DOTFILES_DIR="$XDG_CONFIG_HOME/dotfiles"
 
 # =============================================================================
 # Load environment

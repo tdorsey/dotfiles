@@ -14,16 +14,16 @@ setup() {
     [ -n "$XDG_CONFIG_HOME" ]
 }
 
-@test "XDG_CONFIG_HOME points to dotfiles" {
-    [ "$XDG_CONFIG_HOME" = "$HOME/.config/dotfiles" ]
+@test "XDG_CONFIG_HOME points to standard location" {
+    [ "$XDG_CONFIG_HOME" = "$HOME/.config" ]
 }
 
 @test "DOTFILES_DIR is set" {
     [ -n "$DOTFILES_DIR" ]
 }
 
-@test "DOTFILES_DIR equals XDG_CONFIG_HOME" {
-    [ "$DOTFILES_DIR" = "$XDG_CONFIG_HOME" ]
+@test "DOTFILES_DIR equals XDG_CONFIG_HOME/dotfiles" {
+    [ "$DOTFILES_DIR" = "$XDG_CONFIG_HOME/dotfiles" ]
 }
 
 @test "PATH contains HOME/bin" {
@@ -62,10 +62,10 @@ setup() {
     [ "$output" = "1" ]
 }
 
-@test "profile sets XDG_CONFIG_HOME correctly" {
+@test "profile sets XDG_CONFIG_HOME to standard location" {
     output="$(HOME=/homedir bash -c 'source /homedir/.profile && echo XDG=$XDG_CONFIG_HOME' 2>&1)"
     status=$?
     [ "$status" -eq 0 ]
     echo "output: $output" >&2
-    [ "$output" = "XDG=/homedir/.config/dotfiles" ]
+    [ "$output" = "XDG=/homedir/.config" ]
 }
