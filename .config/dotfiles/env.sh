@@ -5,10 +5,14 @@
 __ENV_LOADED=1
 
 # =============================================================================
-# XDG Base Directory Setup (must be first!)
+# XDG Base Directory Setup
+# Note: XDG_CONFIG_HOME should be set in .profile before sourcing env.sh
+# This section uses the pre-set value
 # =============================================================================
-# Set XDG_CONFIG_HOME to default if not set
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles"
+# Ensure XDG_CONFIG_HOME is set (fallback if not set by .profile)
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    export XDG_CONFIG_HOME="$HOME/.config/dotfiles"
+fi
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:-/etc/xdg}"
 
 # Define DOTFILES_DIR for convenience
