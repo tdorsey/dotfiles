@@ -106,7 +106,7 @@ setup() {
     }
     export -f pre-commit
 
-    run run_pre_commit 'origin' 'remote' <<<'Test'
+    run run_pre_commit 'origin' 'remote' <<< 'Test'
 
     assert_success
     assert_output 'Test'
