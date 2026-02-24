@@ -2,9 +2,8 @@
 name: Release
 
 "on":
-  push:
-      
-
+  push: {}
+  
 jobs:
   release:
     runs-on: ubuntu-latest
